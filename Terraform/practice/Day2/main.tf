@@ -4,9 +4,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "ec2" {
-    ami = ""
-    instance_type = ""
-    subnet_id = ""
+    ami = var.amiID
+    instance_type = var.instance_type
+    
 }
 
 resource "aws_s3_bucket" "s3_bucket" {
