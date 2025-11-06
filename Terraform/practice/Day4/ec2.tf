@@ -17,7 +17,7 @@ resource "aws_security_group" "mysg" {
     vpc_id = aws_default_vpc.default.id #interpolation
 
     tags = {
-      "Name" = "automate-sg"
+      "Name" = "${var.env}-automate-sg"
     }
 
     #inbound rule - ingress
