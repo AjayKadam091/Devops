@@ -5,5 +5,6 @@
 **/terra-key-ec2.pub
 **/terraform.tfstate
 **/terraform.tfstate.backup
+**/.terraform.lock.hcl
 /c/Users/Ausu/DevOps/Terraform/practice/Day1/.terraform.lock.hcl
 /c/Users/Ausu/DevOps/Terraform/practice/Day2/.terraform.lock.hcl
