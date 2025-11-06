@@ -53,17 +53,16 @@ resource "aws_security_group" "mysg" {
 
 
 resource "aws_instance" "my_instance" {
-  for_each = tomap({
-    My-terra-instance-micro = "t3.micro"
-    My-terra-instance-medium = "t3.medium"
-  })
-  depends_on = [
-    aws_security_group.mysg, aws_key_pair.mykey
-  ]
  # count = 2 # meta argument
+# for_each = tomap({                                                #use each.key and each.value to access these
+#    My-terra-instance-micro = "t3.micro"
+#    My-terra-instance-medium = "t3.medium"
+# })
+  depends_on = [ aws_security_group.mysg, aws_key_pair.mykey]
   key_name = aws_key_pair.mykey.key_name
   security_groups = [ aws_security_group.mysg.name ]
-  instance_type = each.value
+  instance_type = var.instance_type
+#  instance_type = each.value
   ami = var.ami_id # ubuntu
   root_block_device {
     volume_size = var.env == "prod" ? 20 : var.ec2_default_root_storage_size # ternary operator
@@ -71,7 +70,8 @@ resource "aws_instance" "my_instance" {
   }
     user_data = file("install_nginx.sh")
   tags = {
-    "Name" = each.key
+    "Name" = "My-terra-instance"
+#    "Name" = each.key
   }
 }
 
