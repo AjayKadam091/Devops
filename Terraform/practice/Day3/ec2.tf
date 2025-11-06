@@ -55,7 +55,7 @@ resource "aws_security_group" "mysg" {
 resource "aws_instance" "my_instance" {
  # count = 2 # meta argument
 # for_each = tomap({                                                #use each.key and each.value to access these
-#    My-terra-instance-micro = "t3.micro"
+#    My-terra-instance-micro = "t3.micro",
 #    My-terra-instance-medium = "t3.medium"
 # })
   depends_on = [ aws_security_group.mysg, aws_key_pair.mykey]
